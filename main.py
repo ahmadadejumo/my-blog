@@ -60,7 +60,7 @@ class User(UserMixin, db.Model):
     comments = relationship("Comment", back_populates="author")
 
 
-db.create_all()
+# db.create_all()
 
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
@@ -220,4 +220,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=7000)
