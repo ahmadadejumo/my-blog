@@ -25,7 +25,7 @@ gravatar = Gravatar(app,
                     base_url=None)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -60,7 +60,7 @@ class User(UserMixin, db.Model):
     comments = relationship("Comment", back_populates="author")
 
 
-# db.create_all()
+db.create_all()
 
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
