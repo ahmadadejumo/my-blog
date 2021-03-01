@@ -87,7 +87,7 @@ class Comment(db.Model):
     text = db.Column(db.Text, nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 @app.route('/')
 def get_all_posts():
@@ -220,4 +220,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=7000)
+    app.run(debug=True)
